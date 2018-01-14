@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>getGods</servlet-name>
+		<servlet-class>Controller.getGodsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getGods</servlet-name>
+		<url-pattern>/getGods</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>getItems</servlet-name>
+		<servlet-class>Controller.getItemsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getItems</servlet-name>
+		<url-pattern>/getItems</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>getDamage</servlet-name>
+		<servlet-class>Controller.getDamageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getDamage</servlet-name>
+		<url-pattern>/getDamage</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>

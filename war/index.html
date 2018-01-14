@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Smite Damage Calculator</title>
+		<script src="scripts/jquery.js"></script>
+		<script src="scripts/jquery-ui.js"></script>
+		<script src="scripts/smiteapp.js"></script>
+		<link rel="stylesheet" href="css/styles1.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.theme.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.structure.css"/>
+	</head>
+
+	<body>
+	
+		<div id="content">
+			<div id="contentStatsRow">
+				<div id="godStats" class="single god">
+					<fieldset>
+					<legend>God</legend>
+						<form>
+							<label for="gods">God:</label>
+							<select id="gods" name="godName" class="godName" onchange="loadGod(this)">
+
+							</select>
+							
+							<label for="godLevel">God Level:</label>
+							<select id="godLevel" name="godLevel" class="level" onchange="levelChange()">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+							</select>
+							
+							<ul>
+								<li id="godPantheon">Pantheon:</li>
+								<li id="godClass">Class:</li>
+								<li id="godType">Type:</li>
+								<li id="godHealth">Health:</li>
+								<li id="godMana">Mana:</li>
+								<li id="godPower">Power:</li>
+								<li id="godSpeed">Speed:</li>
+								<li id="godRange">Range:</li>
+								<li id="godAPS">Attacks per Second:</li>
+								<li id="godBasicDam">Basic Attack Damage:</li>
+								<li id="godDPS">Basic Attack DPS:</li>
+								<li id="godPhysProt">Physical Protection:</li>
+								<li id="godMagProt">Magical Protection:</li>
+								<li id="godPen">Penetration:</li>	
+								<li id="godCrit">Crit Chance:</li>	
+								<li id="godCDR">Cooldown Reduction:</li>				
+							</ul>
+
+						</form>
+					</fieldset>
+				</div>
+				
+				<div id="itemsMoves" class="single items">
+					<div id="itemMovesTable">
+						<div id="itemsRow">
+							<div id="itemsCell">
+								<fieldset>
+								<legend>Items</legend>
+									<form>
+										<ul>
+											<li>
+												
+												<label for="item1">Item 1:</label>
+												<select id="items1" name="item1" class="item" onchange="itemChange(this)">
+													<option>-</option>
+												</select>
+												<input type="number" id="items1Stacks" value="0" class="stacks" onchange="stackChange()">
+											</li>
+											
+											<li>
+												<label for="item2">Item 2:</label>
+												<select id="items2" name="item2" class="item" onchange="itemChange(this)">
+													<option>-</option>
+												</select>
+												<input type="number" id="items2Stacks" value="0" class="stacks" onchange="stackChange()">
+											</li>
+											
+											<li>
+												<label for="item3">Item 3:</label>
+												<select id="items3" name="item3" class="item" onchange="itemChange(this)">
+													<option>-</option>
+												</select>
+												<input type="number" id="items3Stacks" value="0" class="stacks" onchange="stackChange()">
+											</li>
+											
+											<li>
+												<label for="item4">Item 4:</label>
+												<select id="items4" name="item4" class="item" onchange="itemChange(this)">
+													<option>-</option>
+												</select>
+												<input type="number" id="items4Stacks" value="0" class="stacks" onchange="stackChange()">
+											</li>
+											
+											<li>
+												<label for="item5">Item 5:</label>
+												<select id="items5" name="item5" class="item" onchange="itemChange(this)">
+													<option>-</option>
+												</select>
+												<input type="number" id="items5Stacks" value="0" class="stacks" onchange="stackChange()">
+											</li>
+											
+											<li>
+												<label for="item6">Item 6:</label>
+												<select id="items6" name="item6" class="item" onchange="itemChange(this)">
+													<option>-</option>
+												</select>
+												<input type="number" id="items6Stacks" value="0" class="stacks" onchange="stackChange()">
+											</li>
+										</ul>
+									</form>
+								</fieldset>
+							</div>
+						</div>
+						
+						
+						<div id="movesRow">
+							<div id="movesCell">
+								<div id="moves">
+									<fieldset>
+										<legend>Moves</legend>
+										<form>
+											<table width="100%">
+												<tr>
+													<th align="left">Move</th>
+													<th align="left">Level</th>
+													<th align="left">Damage</th>
+												</tr>
+												<tr>
+													<td width="65%">
+														<div id="move1"></div>
+													</td>
+													<td width="16%">
+														<select name="move1level" class="lvl" onchange="loadMoves()">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+													</td width="19%">
+													<td>
+														<div id="move1dmg"></div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<div id="move2"></div>
+													</td>
+													<td>
+														<select name="move2level" class="lvl" onchange="loadMoves()">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+													</td>
+													<td>
+														<div id="move2dmg"></div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<div id="move3"></div>
+													</td>
+													<td>
+														<select name="move3level" class="lvl" onchange="loadMoves()">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+													</td>
+													<td>
+														<div id="move3dmg"></div>
+													</td>
+												</tr>
+												
+												<tr>
+													<td>
+														<div id="move4"></div>
+													</td>
+													<td>
+														<select name="move4level" class="lvl" onchange="loadMoves()">
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+														</select>
+													</td>
+													<td>
+														<div id="move4dmg"></div>
+													</td>
+												</tr>
+									
+											</table>
+										</form>
+									</fieldset>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="enemyGodStats" class="single god">
+					<fieldset>
+						<legend>Enemy God</legend>
+						<form>
+							<label for="enemyGodName">God:</label>
+							<select id="enemyGods" name="enemyGodName" class="godName" onChange="loadEnemyGod(this)">
+							
+							</select>
+							
+							<label for="enemyGodLevel">God Level:</label>
+							<select name="enemyGodLevel" class="level" onchange="loadEnemyStats()">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+								<option value="13">13</option>
+								<option value="14">14</option>
+								<option value="15">15</option>
+								<option value="16">16</option>
+								<option value="17">17</option>
+								<option value="18">18</option>
+								<option value="19">19</option>
+								<option value="20">20</option>
+							</select>
+							
+							<ul>
+								<li id="enemyGodPantheon">Pantheon:</li>
+								<li id="enemyGodClass">Class:</li>
+								<li id="enemyGodType">Type:</li>
+								<li id="enemyGodHealth">Health:</li>
+								<li id="enemyGodMana">Mana:</li>
+								<li id="enemyGodPower">Power:</li>
+								<li id="enemyGodSpeed">Speed:</li>
+								<li id="enemyGodRange">Range:</li>
+								<li id="enemyGodAPS">Attacks per Second:</li>
+								<li id="enemyGodPhysProt">Physical Protection:</li>
+								<li id="enemyGodMagProt">Magical Protection:</li>
+								<li id="enemyGodPen">Penetration:</li>	
+								<li id="enemyGodCrit">Crit Chance:</li>					
+							</ul>
+						</form>
+							
+					</fieldset>
+				</form>
+				</div>
+				
+				
+				<div id="enemyItems" class="single items">
+					<fieldset id="enemyItemsFS">
+					<legend>Enemy Items</legend>
+						<form>
+							<ul>
+								<li>
+									<label for="enemyItem1">Item 1:</label>
+									<select id="enemyItems1" name="enemyItem1" class="item" onchange="enemyItemChange(this)">
+										<option>-</option>
+									</select>
+									<input type="number" id="enemyItems1Stacks" value="0" class="stacks" onchange="enemyStackChange()">
+								</li>
+								
+								<li>
+									<label for="enemyItem2">Item 2:</label>
+									<select id="enemyItems2" name="enemyItem2" class="item" onchange="enemyItemChange(this)">
+										<option>-</option>
+									</select>
+									<input type="number" id="enemyItems2Stacks" value="0" class="stacks" onchange="enemyStackChange()">
+								</li>
+								
+								<li>
+									<label for="enemyItem3">Item 3:</label>
+									<select id="enemyItems3" name="enemyItem3" class="item" onchange="enemyItemChange(this)">
+										<option>-</option>
+									</select>
+									<input type="number" id="enemyItems3Stacks" value="0" class="stacks" onchange="enemyStackChange()">
+								</li>
+								
+								<li>
+									<label for="enemyItem4">Item 4:</label>
+									<select id="enemyItems4" name="enemyItem4" class="item" onchange="enemyItemChange(this)">
+										<option>-</option>
+									</select>
+									<input type="number" id="enemyItems4Stacks" value="0" class="stacks" onchange="enemyStackChange()">
+								</li>
+								
+								<li>
+									<label for="enemyItem5">Item 5:</label>
+									<select id="enemyItems5" name="enemyItem5" class="item" onchange="enemyItemChange(this)">
+										<option>-</option>
+									</select>
+									<input type="number" id="enemyItems5Stacks" value="0" class="stacks" onchange="enemyStackChange()">
+								</li>
+								
+								<li>
+									<label for="enemyItem6">Item 6:</label>
+									<select id="enemyItems6" name="enemyItem6" class="item" onchange="enemyItemChange(this)">
+										<option>-</option>
+									</select>
+									<input type="number" id="enemyItems6Stacks" value="0" class="stacks" onchange="enemyStackChange()">
+								</li>
+							</ul>
+						</form>
+					</fieldset>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div id="content2">
+			<div id="contentAttacksRow">
+				<fieldset>
+					<legend>Attacks</legend>
+					
+					
+					<div id = "moveSelection">
+						<table>
+							<tr>
+								<td class="buttonCell"><button type="button" onclick="addMove(this)" id="move1button" class="attackButton">Move 1</button></td>
+								<td class="buttonCell"><button type="button"onclick="addMove(this)" id="move2button" class="attackButton">Move 2</button></td>
+								<td class="buttonCell"><button type="button"onclick="addMove(this)" id="move3button" class="attackButton">Move 3</button></td>
+								<td class="buttonCell"><button type="button"onclick="addMove(this)" id="move4button" class="attackButton">Move 4</button></td>
+							</tr>
+							<tr>
+								<td id="move1info"></td>
+								<td id="move2info"></td>
+								<td id="move3info"></td>
+								<td id="move4info"></td>
+							</tr>
+
+							<tr>
+								<td class="buttonCell"><button type="button" onclick="addMove(this)" id="qins" class="attackButton">Qin's Sais Proc</button></td>
+								<td class="buttonCell"><button type="button" onclick="addMove(this)" id="polynomicon" class="attackButton">Polynomicon Proc</button></td>
+								<td class="buttonCell"><button type="button"onclick="addMove(this)" id="soulReaver" class="attackButton">Soul Reaver Proc</button></td>
+								<td class="buttonCell"><button type="button" onclick="addMove(this)" id="mysticalMail" class="attackButton">Mystical Mail Tick</button></td>				
+								
+							</tr>
+							
+							<tr>
+								<td class="buttonCell"><button type="button"onclick="addMove(this)" id="basicAttack" class="attackButton">Basic Attack</button></td>
+							</tr>
+							
+							<tr>
+								<td class="buttonCell"><button type="button" onclick="endCombo()" id="end" class="attackButton">End</button></td>
+							</tr>
+						</table>
+
+					</div>
+					
+					<div id = "attackList">
+						
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		
+		
+		<div id="screenBlock">
+			<img src="images/ajax-loader.gif" style="width:200px; height:200px; display:block; margin: auto auto;">
+		</div>
+	</body>
+
+</html>
